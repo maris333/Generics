@@ -1,10 +1,5 @@
-﻿using System;
-using static Program;
-
-public class Program
+﻿public class Program
 {
-    // TODO: Implement a class that satisfies both DogRepo and CatRepo using generics.
-    // TODO: Implement a method called "Remove" that removes an item from the list by its index.
     public static void Main()
     {
         var dogRepo = new Repo<Dog>();
@@ -14,7 +9,7 @@ public class Program
         Console.WriteLine(dog.Name);
 
         var catRepo = new Repo<Cat>();
-        catRepo.Add(new Cat());
+        catRepo.Add(new Cat() { Name = "Trixie"});
         catRepo.Remove(0);
 
         var cat = catRepo.Get(0);
