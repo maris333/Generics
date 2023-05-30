@@ -3,13 +3,13 @@
     public static void Main()
     {
         var dogRepo = new Repo<Dog>();
-        dogRepo.Add(new Dog());
+        dogRepo.Add(new Dog(), 0);
 
         var dog = dogRepo.Get(0);
         Console.WriteLine(dog.Name);
 
         var catRepo = new Repo<Cat>();
-        catRepo.Add(new Cat() { Name = "Trixie"});
+        catRepo.Add(new Cat() { Name = "Trixie" }, 0);
         catRepo.Remove(0);
 
         var cat = catRepo.Get(0);
@@ -19,14 +19,16 @@
     public class Repo<T>
     {
         private T[] array = new T[5];
-        private int currentIndex = 0;
 
-        public void Add(T item)
+        public void Add(T item, int index)
         {
-            if (currentIndex < array.Length)
+            if (index >= 0 && index < array.Length)
             {
-                array[currentIndex] = item;
-                currentIndex++;
+                array[index] = item;
+            }
+            else
+            {
+                throw new IndexOutOfRangeException();
             }
         }
 
